@@ -23,18 +23,19 @@ body {
     padding: 20px;
     position: fixed;
     top: 0;
-    left: -15%;
+    left: 0;
     height: 100%;
-    transition: left 0.3s;
+    transition: width 0.3s;
 }
 
-.sidebar.visible {
-    left: 0;
+.sidebar.collapsed {
+    width: 50px; /* Szerokość paska po schowaniu */
+    padding: 20px 5px;
 }
 
 .sidebar ul {
-    padding: 35px;
     list-style-type: none;
+    margin-top: 60px;
 }
 
 .sidebar ul li {
@@ -56,17 +57,37 @@ body {
     font-weight: bold;
 }
 
+.app-name.menu-item,
+.sidebar ul li a.menu-item {
+    transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .menu-item {
+    opacity: 0;
+}
+
 .content {
-    width: 100%;
+    width: 85%;
     padding: 20px;
+    margin-left: 15%;
     transition: margin-left 0.3s;
 }
 
+.content.shifted {
+    margin-left: 50px; /* Dopasuj do szerokości paska po schowaniu */
+}
+
 .hamburger-menu {
-    font-size: 1.5em;
+    font-size: 2em; /* Zwiększono rozmiar ikony */
     cursor: pointer;
     position: fixed;
     top: 20px;
     left: 20px;
     z-index: 10;
+    transition: left 0.3s;
+}
+
+.sidebar.collapsed .hamburger-menu {
+    left: 50%;
+    transform: translateX(-50%);
 }

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const hamburgerMenu = document.getElementById("hamburger-menu");
 
     hamburgerMenu.addEventListener("click", function() {
-        sidebar.classList.toggle("visible");
+        sidebar.classList.toggle("collapsed");
+        document.querySelector(".content").classList.toggle("shifted");
     });
 });

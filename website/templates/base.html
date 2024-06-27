@@ -8,26 +8,22 @@
     <title>{% block title %}NoteVault{% endblock %}</title>
 </head>
 <body>
-    <main>
         <div class="container">
-            <nav class="sidebar" id="sidebar">
-            <ul>
-                <li><a href="/login">Log In</a></li>
-                <li><a href="/signup">Sign Up</a></li>
-                <li><a href="/">Home</a></li>
-            </ul>
-            <div class="app-name">NoteVault</div>
-            </nav>
-        <main class="content">
-            <div class="hamburger-menu" id="hamburger-menu">
-                &#9776;
-            </div>
-        </main>
+        <div class="hamburger-menu" id="hamburger-menu">
+            &#9776;
         </div>
-    </main>
-    <footer>
-
-    </footer>
+        <nav class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="#login" class="menu-item">Login</a></li>
+                <li><a href="#signup" class="menu-item">Signup</a></li>
+                <li><a href="#home" class="menu-item">Home</a></li>
+            </ul>
+            <div class="app-name menu-item">NoteVault</div>
+        </nav>
+        <main class="content">
+            <!-- Tutaj znajdzie się główna zawartość strony -->
+        </main>
+    </div>
     <script type="text/javascript" src="{{url_for('static', filename='app.js')}}"></script>
 </body>
 </html>
