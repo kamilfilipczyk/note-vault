@@ -8,20 +8,23 @@
     <title>{% block title %}NoteVault{% endblock %}</title>
 </head>
 <body>
-        <div class="container">
+    <div class="container">
         <div class="hamburger-menu" id="hamburger-menu">
             &#9776;
         </div>
         <nav class="sidebar" id="sidebar">
             <ul>
-                <li><a href="#login" class="menu-item">Login</a></li>
-                <li><a href="#signup" class="menu-item">Signup</a></li>
-                <li><a href="#home" class="menu-item">Home</a></li>
+                <li><a href="/login" class="menu-item">Login</a></li>
+                <li><a href="/signup" class="menu-item">Signup</a></li>
             </ul>
-            <div class="app-name menu-item">NoteVault</div>
+            <div class="app-name menu-item" id="home-link">NoteVault</div>
         </nav>
         <main class="content">
-            <!-- Tutaj znajdzie się główna zawartość strony -->
+            <div class="topbar">
+                {% block topbar %}My Notes{% endblock %}
+            </div>
+            {% block content %}
+            {% endblock %}
         </main>
     </div>
     <script type="text/javascript" src="{{url_for('static', filename='app.js')}}"></script>

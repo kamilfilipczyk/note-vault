@@ -29,8 +29,9 @@ body {
 }
 
 .sidebar.collapsed {
-    width: 50px; /* Szerokość paska po schowaniu */
+    width: 60px;
     padding: 20px 5px;
+    align-items: center;
 }
 
 .sidebar ul {
@@ -55,6 +56,7 @@ body {
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .app-name.menu-item,
@@ -74,20 +76,35 @@ body {
 }
 
 .content.shifted {
-    margin-left: 50px; /* Dopasuj do szerokości paska po schowaniu */
+    margin-left: 60px;
+}
+
+.topbar {
+    width: calc(100% - 15%);
+    height: 50px;
+    background-color: white;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    position: fixed;
+    top: 0;
+    left: 15%;
+    transition: left 0.3s, width 0.3s;
+    border-bottom: 2px solid black;
+}
+
+.content.shifted .topbar {
+    left: 60px;
+    width: calc(100% - 60px);
 }
 
 .hamburger-menu {
-    font-size: 2em; /* Zwiększono rozmiar ikony */
+    font-size: 2em;
     cursor: pointer;
     position: fixed;
     top: 20px;
     left: 20px;
     z-index: 10;
-    transition: left 0.3s;
-}
-
-.sidebar.collapsed .hamburger-menu {
-    left: 50%;
-    transform: translateX(-50%);
 }
