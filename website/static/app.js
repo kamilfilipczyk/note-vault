@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     hamburgerMenu.addEventListener("click", function() {
         sidebar.classList.toggle("collapsed");
         document.querySelector(".content").classList.toggle("shifted");
+        document.querySelector(".topbar").classList.toggle("shifted");
     });
 
     homeLink.addEventListener("click", function() {
