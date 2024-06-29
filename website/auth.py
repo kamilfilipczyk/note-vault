@@ -17,7 +17,6 @@ def sign_up():
         password = request.form.get('password')
         confirm_password = request.form.get('confirm-password')
 
-        """
         if len(email) < 5:
             flash('Your email is too short.', category='error')
         elif len(user_name) < 2:
@@ -29,7 +28,7 @@ def sign_up():
         else:
             flash('Account created succesfully!', category='success')
             
-        """
+
     return render_template('signup.html')
 
 @auth.route('/logout')

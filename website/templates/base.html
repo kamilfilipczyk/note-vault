@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='flash_styles.css')}}">
     <title>{% block title %}NoteVault{% endblock %}</title>
 </head>
 <body>
@@ -23,10 +24,23 @@
             <div class="topbar">
                 {% block topbar %}My Notes{% endblock %}
             </div>
+            <div class="flash-container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        <span class="closebtn">&times;</span>
+                        <strong>{{ category.capitalize() }}!</strong> {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
             {% block content %}
             {% endblock %}
         </main>
     </div>
     <script type="text/javascript" src="{{url_for('static', filename='app.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='flash_scripts.js')}}"></script>
 </body>
 </html>
