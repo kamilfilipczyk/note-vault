@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, flash
+from .models import User
 
 auth = Blueprint("auth", __name__)
 
@@ -26,6 +27,7 @@ def sign_up():
         elif password != confirm_password:
             flash('Passwords don\'t match.', category='error')
         else:
+            #new_user = User(email=email, username=user_name, password_hash=password)
             flash('Account created succesfully!', category='success')
             
 
