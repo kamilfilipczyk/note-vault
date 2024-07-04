@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask_login import login_user, login_required, logout_user, current_user
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -10,7 +11,16 @@ def log_in():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-    return render_template('login.html')
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password_hash, password):
+                login_user(user, remember=True)
+                return redirect(url_for('views.home'))
+            else:
+                flash('Incorrect password, please try again.', category='error')
+        else:
+            flash('Incorrect email, please try again.', category='error')
+    return render_template('login.html', user=current_user)
 
 @auth.route('/signup', methods=['GET','POST'])
 def sign_up():
@@ -20,7 +30,11 @@ def sign_up():
         password = request.form.get('password')
         confirm_password = request.form.get('confirm-password')
 
-        if len(email) < 5:
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            flash('This email is already in use.', category='error')
+        elif len(email) < 5:
             flash('Your email is too short.', category='error')
         elif len(user_name) < 2:
             flash('Your username is too short.', category='error')
@@ -32,11 +46,14 @@ def sign_up():
             new_user = User(email=email, username=user_name, password_hash=generate_password_hash(password))
             db.session.add(new_user)
             db.session.commit()
+            login_user(user, remember=True)
             flash('Account created succesfully!', category='success')
             return redirect(url_for('views.home'))
 
-    return render_template('signup.html')
+    return render_template('signup.html', user=current_user)
 
 @auth.route('/logout')
+@login_required
 def log_out():
+    logout_user()
     return render_template('logout.html')
