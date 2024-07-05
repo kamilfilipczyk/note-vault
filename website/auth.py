@@ -14,6 +14,7 @@ def log_in():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password_hash, password):
+                flash('Logged in!', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
