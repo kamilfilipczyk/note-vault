@@ -13,3 +13,27 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "/";
     });
 });
+
+function openAddNoteModal() {
+    document.getElementById("addNoteModal").style.display = "block";
+}
+
+function closeAddNoteModal() {
+    document.getElementById("addNoteModal").style.display = "none";
+}
+
+function autoResizeTextarea(event) {
+    const textarea = event.target;
+    textarea.style.height = 'auto';
+    textarea.style.height = (textarea.scrollHeight) + 'px';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const textarea = document.getElementById("noteContent");
+    textarea.addEventListener("input", autoResizeTextarea);
+    textarea.style.height = 'auto';
+    textarea.style.height = (textarea.scrollHeight) + 'px';
+});
+
+
+
