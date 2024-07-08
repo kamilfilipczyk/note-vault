@@ -47,7 +47,7 @@ def sign_up():
             new_user = User(email=email, username=user_name, password_hash=generate_password_hash(password))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
             flash('Account created succesfully!', category='success')
             return redirect(url_for('views.home'))
 
@@ -57,4 +57,4 @@ def sign_up():
 @login_required
 def log_out():
     logout_user()
-    return render_template('logout.html')
+    return render_template('logout.html', user=current_user)
