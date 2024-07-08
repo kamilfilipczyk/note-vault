@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: 'Roboto' ,Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .container {
@@ -188,7 +188,7 @@ body {
 .add-note-btn {
     position: absolute;
     top: 70px;
-    left: calc(15% + 20px);
+    left: calc(85% - 70px);
     background-color: #2c3e50;
     color: white;
     border: none;
@@ -196,11 +196,13 @@ body {
     width: 60px;
     height: 60px;
     font-size: 2em;
-    line-height: 60px;
     text-align: center;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s, left 0.3s;
 }
 
 .add-note-btn:hover {
@@ -208,8 +210,36 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.content.shifted .add-note-btn {
-    left: calc(60px + 20px);
+#notes {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.note {
+    width: calc(20% - 10px);
+    height: calc(33vh - 10px); /* 3 rzędy po 5 notatek */
+    margin: 5px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow: auto;
+    cursor: pointer;
+}
+
+.note-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.note-content {
+    font-size: 1em;
+    height: calc(100% - 30px);
 }
 
 .modal {
@@ -329,33 +359,4 @@ body {
 
 .cancel-btn:hover {
     background-color: #f2f2f2;
-}
-
-#notes {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.note {
-    width: calc(20% - 10px);
-    height: calc(50vh - 10px);
-    margin: 5px;
-    background-color: #ecf0f1;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.add-note-item {
-    width: calc(20% - 10px);
-    height: calc(50vh - 10px);
-    margin: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

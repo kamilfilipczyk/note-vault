@@ -1,28 +1,33 @@
-{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
 {% block content %}
+<button class="add-note-btn" onclick="openAddNoteModal()">+</button>
 <ul id="notes">
     {% for note in user.notes %}
-    <li>{{ note.data }}</li>
-    {% endfor %}
-    <li class="add-note-item">
-        <button class="add-note-btn" onclick="openAddNoteModal()">+</button>
+    <li class="note">
+        <div class="note-title">{{ note.title }}</div>
+        <div class="note-content">{{ note.data }}</div>
     </li>
+    {% endfor %}
 </ul>
 {% endblock %}
+
 {% block new_note_modal %}
-    <div id="addNoteModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeAddNoteModal()">&times;</span>
-            <h2>Add New Note</h2>
-            <form method="post">
-                <input type="text" id="noteTitle" name="noteTitle" placeholder="Title" required>
-                <div class="separator"></div>
-                <textarea id="noteContent" name="noteContent" rows="10" placeholder="Content" required></textarea>
-                <div class="modal-buttons">
-                    <button type="button" class="cancel-btn" onclick="closeAddNoteModal()">Cancel</button>
-                    <button type="submit" class="save-btn">Save</button>
-                </div>
-            </form>
-        </div>
+<div id="addNoteModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddNoteModal()">&times;</span>
+        <h2>Add New Note</h2>
+        <form method="post">
+            <input type="text" id="noteTitle" name="noteTitle" placeholder="Title" required>
+            <div class="separator"></div>
+            <textarea id="noteContent" name="noteContent" rows="10" placeholder="Content" required></textarea>
+            <div class="modal-buttons">
+                <button type="button" class="cancel-btn" onclick="closeAddNoteModal()">Cancel</button>
+                <button type="submit" class="save-btn">Save</button>
+            </div>
+        </form>
     </div>
+</div>
 {% endblock %}
