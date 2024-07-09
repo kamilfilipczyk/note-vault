@@ -1,5 +1,24 @@
 # .gitignore
+venv/
 __pycache__/
 *.pyc
-venv/
+*.pyo
+*.pyd
+.Python
 .env
+instance/
+.webassets-cache
+.pytest_cache/
+.coverage
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.idea/
+.vscode/
+*.swp
+.DS_Store
+*.sublime-project
+*.sublime-workspace
